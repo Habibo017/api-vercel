@@ -1,0 +1,14 @@
+{
+    "type": "service_account",
+    "project_id": "denny-language-school",
+    "private_key_id": "13e7dd252a17a12c29dddd01d9280d0a45b615e4",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQC1sE+IZs3kAu6O\nT5yCGbWc2L9Lcn7saKXHP3UsXAlz+XXgL+t4jA5kNaIQF9s3q9LS7Hhv5Um640aa\nXoiN7Sd2d6epe7FB4cbikhWOQ4vJmQYfUA3LJI4yTRoxfL+fqgtp/HgqOV1Dmd4Q\n+Zk6lBZHgNyeUc82PohY0i/0gt61rys5Y8SnpK3mwdcaB6JofoxofpImLnQtSM1d\nWErv2UQBsPpvqNicj/9HIqvltXFYbg9ot3lTbD9Ql676xN6N7CVsQkSeKUMNjW8m\nHiAjMD+tMocHotj7SgHdtURvJlnP51YPcLwmsYOJsK8w6x402M74CP0OmxgM2uFc\nZs31SebZAgMBAAECggEAUTA7ogq6Z3DN9CbsG5DsgG20sby0reSna81WCWAJU1s+\nitMvCFuhlLMIu+NFMO/lkh5cRTgzBcHIy3OB1tYKQ9x9PfWJhJSlAJrh6gQSA6CP\nRU/LEiNALYcZtNJ3eJwOZKqOcePXYr1vp6s5hx0khYg2TcLl8unnmLU3+629Ynbl\n8Q3TGjcvkNTn5GWwuPsYOpbQBh6yQu6FLOGtVFOuYrIIgUxvYzFHQBbtfpAs/lfu\nFSshAzBEWnQzK8vRdmnkfDLQfrN0bHahENI2ouW+jEXctwTEacwK9aTBuwcgyiFJ\noAiUhdtRLcdieB9sCBZKzlbWBiJxXoqcYvY5pzXWBwKBgQDvWi+Xf4wdiPCslNxC\naI89UVOUrMLS4JFsWntLgr/Vf8BZzliPA/uAo03rT3AxUdZF3PO4q9h5XNZbGJa1\n96jlBzNNVgTIEdoZpaBarWPmeApoTos6LTgh5h1rvR+729Y/ygrdw0J8NxnXQQSR\ntUm8yvxQhIuE1HZlPLxxBjvlewKBgQDCU2O2IbLyEgPgy75Rq78q4seTfP1KixNv\nXrh00grC86nfLV7zJCVVY81cUCGh2zxRDCmo4jRHyuI6zLuqBDBNAO0Pa+DYmw3B\nj4zt9E1jEoKtj4SJNnu+4hrGF0jZSeLR+r5VHK1DeyCkjMtiF9IBfLxscByl41DW\nwnQe72HyuwKBgEDhfIcfnvaemUbe7zndJ/7iHbrufb01/JWXjVZxsdiI0bZGVgEm\nfjVnjwabOPlVirTTaQmFI5/6R2zYJHpdEN5Mbl6nU5J8LFfJasdJuwvNPFz79Yem\nnFGsFAuRb5m3xMLz3LAybsJHGW0dBcUNlFhl2bFlzIAMK6/Tn+0vWGsjAoGAJxAI\nPTZs+Egyy19pdJVnqkFICRfY+sEWOQ77WVBXpXTBswE10v5zGsUjJOleuWCOsWQW\ng8Jk7AGWlGdPWg/ZfcEv5iezXRdeHoiytaqkW8P+zNDKvaJcIbTl2OgZVsSJedhD\npmxLUANSPoGm6KMNLgta/RlUSOx29ZTFLurD770CgYAevgGeKsfqApx2/qgJDYTP\n20Sd1ipzvsXxmIes6KzanvJR8DuakeLgdZ0w/W890KD+GO8Np3ibsyuH1Kx9pDRc\na8WakfoWgILYYPvZmFvQ0s30FnDSi/dS+3wTL7Ldr4RWpFLCRbRdYBCDJvWhYjsU\npNVAKbJD76546ONNy9R5qQ==\n-----END PRIVATE KEY-----\n",
+    "client_email": "firebase-adminsdk-fbsvc@denny-language-school.iam.gserviceaccount.com",
+    "client_id": "104867346318982795901",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40denny-language-school.iam.gserviceaccount.com",
+    "universe_domain": "googleapis.com"
+  }
+  
