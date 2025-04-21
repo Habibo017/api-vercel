@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+</head>
+<style>
+    .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #d4c9c9;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .clock {
+            display: flex;
+            text-align: center;
+            padding-left: 10px;
+            
+        }
+
+        .horas,
+        .minutos,
+        .segundos
+         {
+            text-align: center;
+            
+            gap: 10px;
+            padding-left: 30px;
+            border-radius: 50%;
+            padding: 50px;
+            background: yellow;
+            border: 1px solid #0097fe
+        }
+
+       
+
+        .horas,
+        .minutos,
+        .segundos p {
+            font-weight: bold;
+
+        }
+
+        .dia,
+        .mes,
+        .ano {
+            text-align: center;
+            gap: 10px;
+            padding-left: 30px;
+            border-radius: 50%;
+            padding: 50px;
+            background: yellow;
+            border: 1px solid #0097fe 
+        }
+</style>
+<body>
+    <div class="container">
+        <h2>Relogio Digital</h2>
+            <br><br>
+        <div class="clock">
+            
+            <div class="horas" onclick="verHoras()">
+                <p>Horas</p>
+                <span id="horas">00</span>
+            </div>
+            <br>
+            <div class="minutos">
+                <p>Minutos</p>
+                <span id="minutos">00</span>
+            </div>
+            <div class="segundos">
+                <p>Segundos</p>
+                <span id="segundos">00</span>
+            </div>
+        </div>
+        <br><br>
+        <div class="data" style="display: flex;">
+            <div class="dia">
+                <p>Dia</p>
+                <span id="dia">00</span>
+            </div>
+            <div class="mes">
+                <p>Mes</p>
+                <span id="mes">0000</span>
+            </div>
+            <div class="ano">
+                <p>Ano</p>
+                <span id="ano">0000</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const getHour = document.getElementById('horas')
+        const getMinute = document.getElementById('minutos')
+        const getSecond = document.getElementById('segundos')
+        const getDia = document.getElementById('dia')
+        const getMes = document.getElementById('mes')
+        const getAno = document.getElementById('ano')
+        function atualizarHora() {
+            
+        const data = new Date()
+
+const horas = data.getHours()
+const minutos = data.getMinutes()
+const segundos = data.getSeconds()
+const dia = data.getDate()
+const mes = data.getMonth()+1
+const ano = data.getFullYear()
+
+getHour.textContent = horas;
+getMinute.textContent = minutos;
+getSecond.textContent = segundos;
+getDia.textContent = dia;
+getMes.textContent = mes;
+getAno.textContent = ano;
+
+
+        }
+
+        atualizarHora(setInterval(1000, setTimeout(1000)))
+        function verHoras() {
+        alert(`agora sao ${getHour} horas`)
+       }
+    </script>
+</body>
+</html>

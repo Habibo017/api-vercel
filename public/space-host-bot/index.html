@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Space-BOT-Host</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Space-BOT-Host</h2>
+        <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Comandos</a></li>
+            <li><a href="#">Conexão</a></li>
+            <li><a href="#">Teste</a></li>
+            <li><a href="#">Configurações</a></li>
+        </ul>
+    </div>
+    <div class="main-content">
+        <h1>Dashboard</h1>
+        <div class="status">
+            <h2>Status do Bot</h2>
+            <p>Seu bot está <span class="status-text">offline</span></p>
+            <button id="start-bot">Iniciar Bot</button>
+        </div>
+        <div class="logs">
+            <h2>Logs do Bot</h2>
+            <p>Visualize os logs em tempo real do seu bot:</p>
+            <div class="log-actions">
+                <button id="update-logs">Atualizar</button>
+                <button id="clear-logs">Limpar</button>
+                <button id="download-logs">Baixar</button>
+            </div>
+            <div id="log-output" class="log-output">
+                <p>Nenhum log disponível.</p>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

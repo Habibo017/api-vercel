@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GET HOURS</title>
+</head>
+<style>
+    /* Resetando margens e paddings */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilo geral da página */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Faz a página ocupar toda a altura da tela */
+    text-align: center;
+    color: #333;
+}
+
+/* Container que envolve os textos */
+div {
+    background-color: #ffffff;
+    padding: 20px 40px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 300px; /* Largura do container */
+    font-size: 20px;
+}
+
+/* Estilo para a hora */
+#hora {
+font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+    color: #0097fe; /* Cor azul */
+    margin-bottom: 10px;
+}
+
+/* Estilo para a data */
+#data {
+    font-size: 1.2em;
+    color: #ec0000; /* Cor cinza */
+    font-style: italic;
+}
+
+</style>
+<body>
+    <div>
+        <p id="hora"></p>
+        <p id="data"></p>
+    </div>
+    
+    <script>
+        fetch('http://localhost:2052/api/check-hours')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('hora').textContent = `Hora: ${data.hora}`;
+                document.getElementById('data').textContent = `Data: ${data.data}`;
+            })
+            .catch(error => console.error('Erro ao carregar a hora:', error));
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login / Cadastro | DLS</title>
+</head>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: Arial, sans-serif;
+        background-image: url('imagens/IMG-20240609-WA0011.jpg');
+        background-repeat: repeat;
+        background-attachment: fixed;
+    }
+
+    .form {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      
+    }
+
+    .login, .register {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login {
+        margin-right: 20px;
+    }
+
+    .register {
+        margin-left: 20px;
+    }
+
+    h1 {
+        margin: 0 0 20px;
+        padding: 0;
+        font-size: 24px;
+        color: #0097fe;
+        text-align: center;
+    }
+
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background-color: #444;
+    }
+
+    .toggle-buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .toggle-buttons button {
+        margin: 0 10px;
+    }
+
+    .form a {
+        text-decoration: none;
+        color: #0097fe;
+    }
+
+    .form a:hover {
+        color: #04508381;
+    }
+</style>
+<body>
+    <div class="form">
+        <div class="login">
+            <h1>Login</h1>
+            <form  method="post">
+                <input type="text" name="email" placeholder="E-mail" required>
+                <input type="password" name="password" placeholder="Senha" required>
+                <a href="#">Esqueceu a sua senha?</a>
+                <p>Nao tem conta? <a href="#" onclick="showRegister(); return false;">Cadastre-se aqui</a></p>
+                <button type="submit">Entrar</button>
+            </form>
+        </div>
+        <div class="register" style="display: none;">
+            <h1>Cadastro</h1>
+            <form  method="post">
+                <input type="text" name="name" placeholder="Nome" id="userName" required>
+                <input type="text" name="email" placeholder="E-mail" required>
+                <input type="password" name="password" placeholder="Senha" required>
+                <p>Ja tem conta? <a href="#" onclick="showLogin(); return false;">Faca aqui o login</a></p>
+                <button type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        function showLogin() {
+            document.querySelector('.login').style.display = 'block';
+            document.querySelector('.register').style.display = 'none';
+        }
+
+        function showRegister() {
+            document.querySelector('.login').style.display = 'none';
+            document.querySelector('.register').style.display = 'block';
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+    // Captura o formulário de login
+    const loginForm = document.querySelector(".login form");
+    if (loginForm) {
+        loginForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Impede o comportamento padrão do formulário
+            
+            // Captura os valores dos campos
+            const email = loginForm.querySelector('input[name="email"]').value;
+            const password = loginForm.querySelector('input[name="password"]').value;
+
+            // Envia os dados via fetch()
+            fetch("http://localhost:2052/api/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Login bem-sucedido:", data);
+                alert("Login realizado com sucesso!");
+            })
+            .catch(error => {
+                console.error("Erro no login:", error);
+                alert("Erro ao tentar fazer login!");
+            });
+        });
+    }
+
+    // Captura o formulário de cadastro
+    const registerForm = document.querySelector(".register form");
+    if (registerForm) {
+        registerForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Impede o comportamento padrão
+            
+            // Captura os valores dos campos
+            const name = registerForm.querySelector('input[name="name"]').value;
+            const email = registerForm.querySelector('input[name="email"]').value;
+            const password = registerForm.querySelector('input[name="password"]').value;
+
+            // Envia os dados via fetch()
+            fetch("http://localhost:2052/api/cadastro", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ name, email, password })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Cadastro realizado:", data);
+                alert("Cadastro realizado com sucesso!");
+            })
+            .catch(error => {
+                console.error("Erro no cadastro:", error);
+                alert("Erro ao tentar cadastrar!");
+            });
+        });
+    }
+});
+
+
+    </script>
+</body>
+</html>

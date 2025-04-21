@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamentos - Denny Language School</title>
+    <link rel="stylesheet" href="pagamentos.css">
+    <script>
+        // Função para calcular o valor com base nas seleções de curso e modalidade
+        function calcularValor() {
+            const curso = document.getElementById('curso').value;
+            const modalidade = document.getElementById('modalidade').value;
+            let valor = 0;
+
+            if (curso === 'ingles') {
+                valor = (modalidade === 'regular') ? 2000 : 25000;
+            } else if (curso === 'frances') {
+                valor = (modalidade === 'regular') ? 1500 : 2000;
+            } else if (curso === 'mandarim') {
+                valor = (modalidade === 'regular') ? 2500 : 3000;
+            } else if (curso === 'espanhol') {
+                valor = (modalidade === 'regular') ? 2500 : 3000;
+            }
+
+            // Exibe o valor na página
+            document.getElementById('valor').textContent = 'Valor: ' + valor + ' MZN';
+        }
+
+        // Atualizar o valor sempre que a seleção mudar
+        window.onload = calcularValor;
+    </script>
+</head>
+<body>
+    <div class="header">
+        <div class="logo">
+            <a href="index.html">Denny Language School</a>
+        </div>
+        <div class="navbar">
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Página Inicial</a></li>
+                    <li><a href="../cursos.html">Cursos</a></li>
+                    <li><a href="pagamentos.html">Pagamentos</a></li>
+                    <li><a href="../sobre.html">Sobre</a></li>
+                    <li><a href="../contato.html">Contatos</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+    
+    <section class="pagamento">
+        <h1>Opções de Pagamento</h1>
+        <p>Escolha seu curso, modalidade e forma de pagamento para concluir sua inscrição.</p>
+        
+        <form action="processar-pagamento.php" method="post">
+            <label for="curso">Escolha o curso:</label>
+            <select id="curso" name="curso" onchange="calcularValor()">
+                <option value="ingles">Inglês</option>
+                <option value="frances">Francês</option>
+                <option value="mandarim">Mandarim</option>
+                <option value="espanhol">Espanhol</option>
+            </select>
+
+            <label for="modalidade">Escolha a modalidade:</label>
+            <select id="modalidade" name="modalidade" onchange="calcularValor()">
+                <option value="regular">Regular</option>
+                <option value="intensivo">Intensivo</option>
+            </select>
+
+            <label for="pagamento">Forma de pagamento:</label>
+            <select id="pagamento" name="pagamento">
+                <option value="M-pesa">M-pesa</option>
+                <option value="E-mola">E-mola</option>
+                <option value="M-kesh">M-kesh</option>
+                <option value="cartao de credito ou ebido">Transferência Bancária</option>
+            </select>
+
+            <!-- Exibe o valor do curso -->
+            <p id="valor">Valor: 2000 MZN</p>
+
+            <button type="submit" class="btn">Pagar Agora</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Denny Language School - Todos os direitos reservados.</p>
+        <p>Precisa de ajuda? Entre em contato pelo <a href="mailto:suporte@dennylanguageschool.com">suporte@dennylanguageschool.com</a></p>
+    </footer>
+</body>
+</html>

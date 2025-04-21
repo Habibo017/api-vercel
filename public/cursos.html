@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nossos Cursos - Denny Language School</title>
+    <link rel="shortcut icon" href="./imagens/image.png" type="image/x-icon">
+    <!-- Bootstrap apenas para o menu -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Cabeçalho com fundo azul */
+.header {
+  background-color: #0097fe;
+  padding: 10px 20px;
+}
+
+/* Logo */
+.logo a {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Links do menu */
+.nav-link {
+  color: white !important;
+  position: relative;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+/* Hover nos links */
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #e64747 !important;
+  font-weight: bold;
+}
+
+/* Responsividade (telas menores) */
+@media (max-width: 992px) {
+  .navbar-nav {
+    gap: 10px;
+  }
+}
+
+
+        .courses {
+            text-align: center;
+            padding: 50px 20px;
+        }
+
+        .courses h2 {
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .courses p {
+            font-size: 18px;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .course-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .course {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 280px;
+            transition: transform 0.3s;
+            text-align: center;
+        }
+
+        .course:hover {
+            transform: translateY(-5px);
+        }
+
+        .course img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .course h3 {
+            color: #0097fe;
+            margin-top: 15px;
+            font-size: 20px;
+        }
+
+        .course p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .buttons button {
+            font-size: 14px;
+            padding: 8px 15px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .buttons button:first-child {
+            background-color: #0097fe;
+            color: white;
+        }
+
+        .buttons button:last-child {
+            background-color: #ff6b00;
+            color: white;
+        }
+
+        .buttons button:hover {
+            opacity: 0.8;
+        }
+
+        .footer {
+            background-color: #0097fe;
+            color: white;
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 20px;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Cabeçalho -->
+   <!-- Menu Bootstrap personalizado -->
+   <div class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="logo navbar-brand" href="#">Denny Language School</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/index.html" target="_blank">Página inicial</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/cursos.html" target="_blank">Cursos</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/pagamento.html" target="_blank">Pagamentos</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/sobre.html" target="_blank">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/contato.html" target="_blank">Contatos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+        <!-- Seção de Cursos -->
+        <section class="courses">
+            <h2>Nossos Cursos</h2>
+            <p>Escolha entre nossos cursos regulares e intensivos!</p>
+            
+            <div class="course-list">
+                <!-- Curso de Inglês -->
+                <div class="course">
+                    <img src="./imagens/english.jpeg" alt="Curso de Inglês">
+                    <h3>Inglês</h3>
+                    <p>Aprenda inglês com professores qualificados e materiais exclusivos.</p>
+                    <div class="buttons">
+                        <button onclick="comprarCurso('Inglês', 'Regular')">Regular</button>
+                        <button onclick="comprarCurso('Inglês', 'Intensivo')">Intensivo</button>
+                    </div>
+                </div>
+            
+                <!-- Curso de Francês -->
+                <div class="course">
+                    <img src="./imagens/french.jpeg" alt="Curso de Francês">
+                    <h3>Francês</h3>
+                    <p>Domine o francês e abra novas oportunidades no mercado internacional.</p>
+                    <div class="buttons">
+                        <button onclick="comprarCurso('Francês', 'Regular')">Regular</button>
+                        <button onclick="comprarCurso('Francês', 'Intensivo')">Intensivo</button>
+                    </div>
+                </div>
+            
+                <!-- Curso de Mandarim -->
+                <div class="course">
+                    <img src="./imagens/mandarim.jpeg" alt="Curso de Mandarim">
+                    <h3>Mandarim</h3>
+                    <p>Aprenda a língua mais falada do mundo com nosso método interativo.</p>
+                    <div class="buttons">
+                        <button onclick="comprarCurso('Mandarim', 'Regular')">Regular</button>
+                        <button onclick="comprarCurso('Mandarim', 'Intensivo')">Intensivo</button>
+                    </div>
+                </div>
+            
+                <!-- Curso de Espanhol -->
+                <div class="course">
+                    <img src="./imagens/espanhol.jpeg" alt="Curso de Espanhol">
+                    <h3>Espanhol</h3>
+                    <p>Seja fluente em espanhol e explore novas culturas e oportunidades.</p>
+                    <div class="buttons">
+                        <button onclick="comprarCurso('Espanhol', 'Regular')">Regular</button>
+                        <button onclick="comprarCurso('Espanhol', 'Intensivo')">Intensivo</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rodapé -->
+        <div class="footer">
+            <footer>
+                <p>&copy; 2025 Denny Language School - Todos os direitos reservados</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Script para Compra -->
+    <script>
+        function comprarCurso(curso, tipo) {
+            alert("Você selecionou o curso de " + curso + " - " + tipo + ".");
+            window.location.href = "pagamentos-cursos.html";
+        }
+    </script>
+</body>
+</html>

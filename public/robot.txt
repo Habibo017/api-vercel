@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /space-host/  # Exemplo de como bloquear um diretório
+Sitemap: https://denny-language-school-nine.vercel.app/sitemap.xml

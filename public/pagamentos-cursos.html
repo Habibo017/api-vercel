@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento de cursos || Denny Language School</title>
+    <meta name="description" content="Pagamento de cursos da Denny Language School">
+    <link rel="shortcut icon" href="./imagens/image.png" type="image/x-icon">
+     <!-- Bootstrap apenas para o menu -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+       
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+      
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            color: #0097fe;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+        }
+
+        button {
+            background-color: #0097fe;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #007bb5;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+     /* Cabeçalho com fundo azul */
+.header {
+  background-color: #0097fe;
+  padding: 10px 20px;
+}
+
+/* Logo */
+.logo a {
+  color: white;
+  font-size: 24px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* Links do menu */
+.nav-link {
+  color: white !important;
+  position: relative;
+  padding: 8px 12px;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+/* Hover nos links */
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #fff !important;
+  font-weight: bold;
+}
+
+/* Responsividade (telas menores) */
+@media (max-width: 992px) {
+  .navbar-nav {
+    gap: 10px;
+  }
+}
+
+.logo-img img{
+            border-radius: 48px;
+        }
+
+        .logo-img {
+            position: relative;
+            left: 45%;
+        }
+
+        .titulo {
+            text-align: center;
+        }
+
+        /* Rodapé */
+footer {
+    background: #1a1a1a;
+    color: white;
+    padding: 15px;
+    text-align: center;
+    margin-top: 30px;
+    border-radius: 8px;
+}
+
+footer a{
+    text-decoration: underline;
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Menu Bootstrap personalizado -->
+  <div class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="logo navbar-brand" href="#">Denny Language School</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/index.html" target="_blank">Página inicial</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/cursos.html" target="_blank">Cursos</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/pagamento.html" target="_blank">Pagamentos</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/sobre.html" target="_blank">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/contato.html" target="_blank">Contatos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+
+
+<div class="logo-img">
+    <img src="./imagens/logo.jpg" onclick="verFoto()" width="100" height="100" alt="logo da Denny Language School" id="logo">
+</div>
+
+<div class="titulo">
+    <h2>Denny Language School</h2>
+         <p>Rumo a fluencia</p>
+</div>
+
+<br><br><br>
+
+    <h2>Cadastro de Curso</h2>
+    <br><br>
+    <label for="course">Escolha o curso:</label>
+    <select id="course">
+        <option value="" disabled selected>Selecione um curso</option>
+        <option value="ingles">Inglês</option>
+        <option value="frances">Francês</option>
+        <option value="mandarim">Mandarim</option>
+        <option value="espanhol">Espanhol</option>
+    </select>
+
+    <label for="course-type">Pacote em que se inscreve:</label>
+    <select id="course-type">
+        <option value="" disabled selected>Selecione o tipo de curso</option>
+        <option value="regular">Regular</option>
+        <option value="intensivo">Intensivo</option>
+    </select>
+
+    <br><br>
+
+        <label for="nivel">Nivel em que se inscreve</label>
+        <select name="" id="level-type">
+            <option disabled selected>Selecione um nivel</option>
+            <option value="elemtanry (I nivel)">elemtanry(I nivel)</option>
+            <option value="Pre-Intermediate (II nivel)">Pre-Intermediate(II nivel)</option>
+            <option value="Intermediate (III nivel)">Intermediate (III nivel)</option>
+            <option value="UPPER-Intermediate (IV nivel)">UPPER-Intermediate (IV nivel)</option>
+            <option value="Intermediate PLUS (V nivel)">Intermediate PLUS (V nivel)</option>
+            <option value="Advanced (Avancado)">Advanced (Avancado)</option>
+        </select>
+
+        <label for="periodo">Periodo</label>
+        <select name="" id="select-period">
+            <option value="" selected disabled>Selecione o Periodo</option>
+            <option value="manha">Manha</option>
+            <option value="tarde">Tarde</option>
+            <option value="noite">Noite</option>
+        </select>
+
+    <label for="payment-method">Método de Pagamento:</label>
+    <select id="payment-method">
+        <option value="" disabled selected>Escolha o Método de Pagamento</option>
+        <option value="mpesa">M-Pesa</option>
+        <option value="emola">e-Mola</option>
+        <option value="mkesh">M-Kesh</option>
+        <option value="bank">Conta Bancária</option>
+    </select>
+
+    <br><br>
+
+    
+     <div class="price">
+        <h3>Preço: <span id="price">0</span> MZN</h3>
+    </div>
+
+    <button onclick="openModal()">Ver Preço</button>
+
+    <div class="modal" id="priceModal">
+        <div class="modal-content">
+            <h3>Preço do Curso</h3>
+            <p id="priceDisplay">0 MZN</p>
+            <button id="proceed-payment">Proceder com o Pagamento</button>
+
+            <button onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+  
+    <div id="payment-popup" class="popup">
+        <h2>Informações para Pagamento</h2>
+        <p>Transferir para o número: <span id="payment-number">XXXX-XXXX</span></p>
+        <br>
+        <p>Vem em nome de: <span id="name-display">-----------</span></p>
+        <input type="file" id="screenshot" accept="image/*">
+        <button id="upload-screenshot">Enviar Captura</button>
+        <button onclick="closeModalPayment()">Fechar</button>
+    </div>
+
+    <br><br>
+
+    <footer>
+        <p>&copy; <span id="anoAtual">0000</span> Denny Language School - Todos os direitos reservados.</p>
+                    <p>Rumo a fluencia</p>
+        <p>Precisa de ajuda? Entre em contato pelo <a href="mailto:suporte@dennylanguageschool.com">suporte@dennylanguageschool.com</a></p>
+    </footer>
+
+    <script>
+        const courseSelect = document.getElementById('course');
+        const typeSelect = document.getElementById('course-type');
+        const priceDisplayUpdate = document.getElementById('price');
+        const priceDisplay = document.getElementById('priceDisplay');
+        const modal = document.getElementById('priceModal');
+        const proceedButton = document.getElementById('proceed-payment');
+        const paymentPopup = document.getElementById('payment-popup');
+        const paymentNumberDisplay = document.getElementById('payment-number');
+        const paymentMethodSelect = document.getElementById('payment-method');
+        const screenshotInput = document.getElementById('screenshot');
+        const uploadButton = document.getElementById('upload-screenshot');
+        const nameDisplay = document.getElementById('name-display');
+        const anoAtual = document.getElementById('anoAtual')
+
+        const horario = new Date()
+        const anoAgora = horario.getFullYear()
+        anoAtual.textContent = anoAgora;
+
+        const nomeAparece = "Denilson Nhamposse"
+        nameDisplay.textContent = nomeAparece;
+
+        const prices = {
+            ingles: { regular: 2000, intensivo: 2500 },
+            frances: { regular: 2500, intensivo: 3000 },
+            mandarim: { regular: 2500, intensivo: 3000 },
+            espanhol: { regular: 2500, intensivo: 3000 },
+        };
+
+        function updatePrice() {
+            const course = courseSelect.value;
+            const type = typeSelect.value;
+            priceDisplayUpdate.textContent = prices[course][type];
+        }
+
+        courseSelect.addEventListener('change', updatePrice);
+        typeSelect.addEventListener('change', updatePrice);
+
+        proceedButton.addEventListener('click', () => {
+            const paymentMethod = paymentMethodSelect.value;
+
+            let paymentNumber = '';
+            if (paymentMethod === 'mpesa') {
+                paymentNumber = '841391591';
+            } else if (paymentMethod === 'emola') {
+                paymentNumber = '869689317';
+            } else if (paymentMethod === 'mkesh') {
+                paymentNumber = '833042626';
+            } else {
+                paymentNumber = 'conta bancária: 1058202151002';
+            }
+
+            paymentNumberDisplay.textContent = paymentNumber;
+            paymentPopup.style.display = 'flex';
+        });
+
+        function openModal() {
+            priceDisplay.textContent = prices[courseSelect.value]?.[typeSelect.value] + ' MZN' || '0 MZN';
+            modal.style.display = 'flex';
+        }
+
+        function closeModal() {
+            modal.style.display = 'none';
+        }
+
+        uploadButton.addEventListener('click', () => {
+            const file = screenshotInput.files[0];
+            if (file) {
+                const formData = new FormData();
+                formData.append('screenshot', file);
+
+                fetch('http://localhost:2052/upload-captura', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    alert('Captura de tela enviada com sucesso!');
+                    paymentPopup.style.display = 'none';
+                    window.location.href = 'http:node1.forgerhost.online:2009/api/confirmar-pagamento';
+                     
+                })
+                .catch(error => {
+                    console.error('Erro ao enviar captura:', error);
+                    alert('Erro ao enviar captura. Tente novamente.');
+                });
+            } else {
+                alert('Por favor, selecione uma captura de tela.');
+            }
+        });
+
+        function closeModalPayment() {
+            paymentPopup.style.display = 'none';
+        }
+    </script>
+
+</body>
+</html>

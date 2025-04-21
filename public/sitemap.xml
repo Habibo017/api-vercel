@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://denny-language-school-nine.vercel.app/</loc>
+  <lastmod>2025-03-21T13:58:02+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://denny-language-school-nine.vercel.app/cursos.html</loc>
+  <lastmod>2025-03-21T13:58:03+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://denny-language-school-nine.vercel.app/index.html</loc>
+  <lastmod>2025-03-21T13:58:03+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://denny-language-school-nine.vercel.app/pagamento.html</loc>
+  <lastmod>2025-03-21T13:58:03+00:00</lastmod>
+  <priority>0.64</priority>
+  </url>
+
+<url>
+  <loc>https://denny-language-school-nine.vercel.app/pagamentos-cursos.html</loc>
+  <lastmod>2025-03-21T13:58:03+00:00</lastmod>
+  <priority>0.64</priority>
+  </url>
+<url>
+  <loc>https://denny-language-school-nine.vercel.app/sobre.html</loc>
+  <lastmod>2025-03-21T13:58:03+00:00</lastmod>
+  <priority>0.64</priority>
+  </url>
+<url>
+  <loc>https://denny-language-school-nine.vercel.app/contato.html</loc>
+  <lastmod>2025-03-21T13:58:03+00:00</lastmod>
+  <priority>0.64</priority>
+  </url>
+</urlset>

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="geracao de api-key">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Gerar API Key</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+            padding: 50px;
+        }
+
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #cccccc00;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #0097fe;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #007acc;
+        }
+
+        .popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        .popup button {
+            margin-top: 10px;
+            background-color: red;
+        }
+
+        #nota {
+            color: red;
+        }
+
+        #display {
+            background-color: #548db3;
+            margin-left: 10px;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .show-apikey {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Gerar API Key</h2>
+        <input type="text" id="userName" placeholder="Seu nome *" required>
+        <input type="text" id="apiName" placeholder="Nome da API *" required>
+        <button id="generate-key" onclick="generateApiKey()">Gerar API Key</button>
+    </div>
+
+    <div class="popup" id="popup">
+        <span id="nota">Nota: Você só poderá visualizar sua API Key uma única vez após a criação. Então, copie e guarde em um local seguro.</span>
+        <h3>Sua API Key:</h3>
+
+        <div class="show-apikey">
+            <p id="apiKeyDisplay"></p>
+            <button id="display" onclick="copyApiKey()">Copiar</button>
+        </div>
+
+        <button onclick="closePopup()">Fechar</button>
+    </div>
+
+    <script>
+        function generateApiKey() {
+            const userName = document.getElementById("userName").value.trim();
+            const apiName = document.getElementById("apiName").value.trim();
+
+            // Verifica se os campos estão preenchidos
+            if (!userName || !apiName) {
+                alert("Por favor, preencha todos os campos obrigatórios.");
+                return;
+            }
+
+            // Exibe os dados que serão enviados
+            console.log("Enviando:", { userName, apiName });
+
+            // Envia a requisição para o servidor
+            fetch("http:node1.forgerhost.online:2009/generate-key", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ userName, apiName })
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Erro ao gerar a chave de API.');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Verifica se a API Key foi gerada corretamente
+                if (data.apiKey) {
+                    document.getElementById("apiKeyDisplay").innerText = data.apiKey;
+                    document.getElementById("popup").style.display = "block";
+                } else {
+                    alert("Erro ao gerar API Key.");
+                }
+            })
+            .catch(error => {
+                console.error("Erro:", error);
+                alert("Erro ao gerar API Key. Veja o console para mais detalhes.");
+            });
+        }
+
+        function closePopup() {
+            document.getElementById("popup").style.display = "none";
+        }
+
+        function copyApiKey() {
+            const apiKey = document.getElementById("apiKeyDisplay").innerText;
+            if (!apiKey) return;
+
+            navigator.clipboard.writeText(apiKey)
+                .then(() => alert("API Key copiada com sucesso!"))
+                .catch(err => console.error("Erro ao copiar:", err));
+        }
+    </script>
+
+</body>
+</html>

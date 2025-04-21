@@ -1,0 +1,50 @@
+<section class="courses">
+<h2>Nossos Cursos</h2>
+<p>Escolha entre nossos cursos regulares e intensivos!</p>
+
+<div class="course-list">
+    <!-- Curso de Inglês -->
+    <div class="course">
+        <img src="./imagens/english.jpeg" alt="Curso de Inglês">
+        <h3>Inglês</h3>
+        <p>Aprenda inglês com professores qualificados e materiais exclusivos.</p>
+        <div class="buttons">
+            <button onclick="comprarCurso('Inglês', 'Regular')">Regular</button>
+            <button onclick="comprarCurso('Inglês', 'Intensivo')">Intensivo</button>
+        </div>
+    </div>
+
+    <!-- Curso de Francês -->
+    <div class="course">
+        <img src="./imagens/french.jpeg" alt="Curso de Francês">
+        <h3>Francês</h3>
+        <p>Domine o francês e abra novas oportunidades no mercado internacional.</p>
+        <div class="buttons">
+            <button onclick="comprarCurso('Francês', 'Regular')">Regular</button>
+            <button onclick="comprarCurso('Francês', 'Intensivo')">Intensivo</button>
+        </div>
+    </div>
+
+    <!-- Curso de Mandarim -->
+    <div class="course">
+        <img src="./imagens/mandarim.jpeg" alt="Curso de Mandarim">
+        <h3>Mandarim</h3>
+        <p>Aprenda a língua mais falada do mundo com nosso método interativo.</p>
+        <div class="buttons">
+            <button onclick="comprarCurso('Mandarim', 'Regular')">Regular</button>
+            <button onclick="comprarCurso('Mandarim', 'Intensivo')">Intensivo</button>
+        </div>
+    </div>
+
+    <!-- Curso de Espanhol -->
+    <div class="course">
+        <img src="./imagens/espanhol.jpeg" alt="Curso de Espanhol">
+        <h3>Espanhol</h3>
+        <p>Seja fluente em espanhol e explore novas culturas e oportunidades.</p>
+        <div class="buttons">
+            <button onclick="comprarCurso('Espanhol', 'Regular')">Regular</button>
+            <button onclick="comprarCurso('Espanhol', 'Intensivo')">Intensivo</button>
+        </div>
+    </div>
+</div>
+</section>

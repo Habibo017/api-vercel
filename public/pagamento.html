@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadastramento de alunos na Denny Language School">
+    <link rel="stylesheet" href="pagamento.ss">
+    <link rel="shortcut icon" href="./imagens/image.png" type="image/x-icon">
+    <!-- Bootstrap apenas para o menu -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <title>Cadastro De Alunos || DLS</title>
+</head>
+<style>
+     
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        body {
+            background: #fff;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Cabeçalho com fundo azul */
+.header {
+            background-color: #0097fe;
+            padding: 10px 20px;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Logo */
+.logo a {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        /* Links do menu */
+.nav-link {
+            color: white !important;
+            position: relative;
+            padding: 8px 12px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+        }
+
+        /* Hover nos links */
+.nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #e64747 !important;
+            font-weight: bold;
+        }
+
+        /* Responsividade (telas menores) */
+@media (max-width: 992px) {
+            .navbar-nav {
+                gap: 10px;
+            }
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .logo img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .logo img:hover {
+            transform: scale(2.0);
+            transition: 0.3s;
+        }
+
+        .form {
+            max-width: 500px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form p {
+            margin-bottom: 10px;
+        }
+
+        .input-field {
+            margin-bottom: 20px;
+        }
+
+        .input-field p {
+            margin: 0 0 5px;
+        }
+
+        .input-field input,
+        .input-field select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-field select {
+            background-color: #f9f9f9;
+        }
+
+        .input-field select option {
+            padding: 10px;
+        }
+
+        .input-state input {
+            display: flex;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-home input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .input-telephone input {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .document-popup {
+            display: none;
+        }
+
+       /* Estilos Gerais do Popup */
+.document-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  max-width: 500px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  display: none; /* Inicialmente oculto */
+}
+
+/* Estilo do fundo semitransparente para o modal */
+.document-popup::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1; /* Fica atrás do conteúdo */
+}
+
+/* Título do Popup */
+.document-popup h2 {
+  font-size: 22px;
+  color: #333;
+  margin-bottom: 15px;
+  text-align: center;
+}
+
+/* Parágrafos dentro do Popup */
+.document-popup p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 10px;
+}
+
+/* Estilos para os campos de input de arquivo */
+.document-popup input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+  cursor: pointer;
+}
+
+/* Estilos para o botão "Enviar Captura" */
+.document-popup #upload-screenshot {
+  background-color: #0097fe;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.document-popup #upload-screenshot:hover {
+  background-color: #007bb5;
+}
+
+/* Estilos para o botão "Fechar" */
+.document-popup button {
+  background-color: #f44336;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s;
+}
+
+.document-popup button:hover {
+  background-color: #d32f2f;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .document-popup {
+    width: 90%;
+    padding: 15px;
+  }
+
+  .document-popup h2 {
+    font-size: 18px;
+  }
+
+  .document-popup input[type="file"],
+  .document-popup #upload-screenshot,
+  .document-popup button {
+    font-size: 14px;
+  }
+}
+
+
+      .input-field input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button-submit {
+            text-align: center;
+        }
+
+        .button-submit button {
+            background-color: #0097fe;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #0097fe;
+            color: white;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        footer p {
+            font-size: 14px;
+            margin: 10px 0;
+        }
+
+        footer a {
+            color: white;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        body {
+            background-color: #ccc;
+        }
+
+       button#sendPickButton {
+            background-color: #0097fe;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .logo-navbar-brand{
+            color: #fff;
+            font-size: 19px;
+        }
+
+        .logo-navbar-brand  {
+            text-decoration: none;
+        }
+
+        .logo-navbar-brand:hover{
+            font-weight:bold ;
+            color: #ccc;
+        }
+      
+</style>
+<body>
+     <!-- Menu Bootstrap personalizado -->
+  <div class="header">
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="logo-navbar-brand" href="#">Denny Language School</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuPrincipal">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="menuPrincipal">
+          <ul class="navbar-nav gap-2">
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/index.html" target="_blank">Página inicial</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/cursos.html" target="_blank">Cursos</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/pagamento.html" target="_blank">Pagamentos</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/sobre.html" target="_blank">Sobre</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://denny-language-school-nine.vercel.app/contato.html" target="_blank">Contatos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </div>
+    <br><br>
+  <div class="container">
+    <div class="logo">
+        <img src="./imagens/logo.jpg" onclick="verFoto()" width="100" height="100" alt="logo da Denny Language School" id="logo">
+    </div>
+    <br><br>
+    <fieldset>
+        <h2>Cadastro de cursos || DLS</h2>
+        <div class="form">
+            <h2>Faca aqui a sua inscricao</h2>
+            <p>Por favor preencha os campos abaixo marcados <b>*</b> significa que e obrigatorio</p>
+            <div class="input-field">
+                <p>Nome Completo <b>*</b></p>
+                <input type="text" name="name" id="name" placeholder="digite seu nome completo aqui..." required>
+            </div>
+
+            <div class="input-field">
+                <p>Data De Nascimento <b>*</b></p>
+                <input type="date" name="Nascimento" id="Nascimento">
+                <p><span id="getYears">00</span>Anos</p>
+            </div>
+            <br><br>
+
+            <div class="input-state" style="display: block;">
+                <p>Nacionalidade<b>*</b></p>
+                <input type="text" name="nacionalidade" id="nacionalidade" placeholder="EX: BRASIL..." required>
+                <p>Estado Civil</p>
+                <br>
+                <input type="text" name="civilState" id="civilState" placeholder="EX: Solteiro">
+            </div>
+            <br>
+            
+            <br>
+            <div class="input-field">
+                <p>Tipo De Documento<b>*</b></p>
+               <select name="documentos" id="documentos">
+                <option value="" disabled selected >Selecione um tipo de documento</option>
+                <option value="BI">Bilhete De Identidade (B.I)</option>
+                <option value="Cartao Eleitor">Cartao De Eleitor</option>
+                <option value="Passaporte">Passaporte</option>
+                <option value="Cedula Pessoal">Cedula Pessoal (C.P)</option>
+               </select>
+            </div>
+            <br><br>
+
+            <div class="input-field">
+                <p>Foto Do Documento <b>*</b></p>
+                <div class="fotos-selecionadas">
+                    <!-- pre visualizacao aqui-->
+                </div>
+                <button id="sendPickButton" type="button" onclick="sendPickDocument()">Carregar documento</button>
+            </div>
+
+            <div class="document-popup">
+                <h2>Informações para Pagamento</h2>
+                <p>Foto Da Frente</p>
+                <input type="file" id="fotoFrente" accept="image/*" placeholder="frente">
+                <p>Foto Do Verso</p>
+                <input type="file" id="fotoVerso" accept="image/*" placeholder="frente">
+                <br>
+                <button id="upload-screenshot" onclick="uploadDocument()">Enviar Captura</button>
+                <button onclick="closeModalPayment()">Fechar</button>
+            </div>
+
+            <div class="input-field">
+                <p>Numero do Documento <b>*</b></p>
+                <input type="tel" name="docNumber" id="docNumber" placeholder="EX: 1234567890">
+            </div>
+            <br>
+            <div class="input-field">
+                <p>Distrito <b>*</b></p>
+                <input type="text" name="Distrito" id="Distrito" placeholder="EX: Ka-Mavota">
+            </div>
+
+            <div class="input-field">
+                <p>Bairro <b>*</b></p>
+                <input type="text" name="Bairro" id="Bairro" placeholder="EX: Costa do sol">
+            </div>
+
+            <br>
+            <div class="input-home">
+                <p>Casa NR: <b>*</b></p>
+                <input type="tel" name="houseNumber" id="houseNumber" placeholder="EX: 44">
+                <br><br>
+                <p>Quarteirao NR:</p>
+                <input type="tel" name="quarterNumber" id="quarterNumber" placeholder="EX: 12">
+            </div>
+            <br>
+
+            <div class="input-telephone">
+                <p>Telefone <b>*</b></p>
+                <input type="tel" name="telefone" id="telefone" placeholder="EX: 841234567...">
+                <br>
+                <p>Telefone alternativo</p>
+                <input type="tel" name="telefoneAlternativo" id="telefoneAlternativo" placeholder="EX: 841234567...">
+            </div>
+            <br><br>
+        <div class="button-submit">
+            <button type="submit" onclick="submitButton()" id="submit" >Cadastrar e continuar</button>
+        </div>
+        <br>
+        </div>
+<br><br>
+           
+
+    
+    </fieldset>
+
+</div>
+
+
+<footer id="footer">
+    <p>&copy; <span id="timeYear">2025</span> Denny Language School - Todos os direitos reservados</p>
+    <h3>Rumo a fluencia</h3>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+     <script>
+        //calcular a idade apartir da data de nascimento selecionada
+        function calcularIdade() {
+            var dataNascimento = new Date(document.getElementById("Nascimento").value);
+            var hoje = new Date();
+            var idade = hoje.getFullYear() - dataNascimento.getFullYear();
+            var mes = hoje.getMonth() - dataNascimento.getMonth();
+            if (mes < 0 || (mes === 0 && hoje.getDate() < dataNascimento.getDate())) {
+                idade--;
+            }
+            document.getElementById("getYears").innerText = idade;
+        }
+
+         // Função para enviar a foto do documento
+         function sendPickDocument() {
+            let documentPopup = document.querySelector('.document-popup');
+            documentPopup.style.display = 'block';
+        }
+
+        // Função para fechar o popup   
+        function closeModalPayment() {
+            let documentPopup = document.querySelector('.document-popup');
+            documentPopup.style.display = 'none';
+        }
+
+        // Função para enviar o documento   
+        function uploadDocument() {
+            const fotoFrente = document.getElementById('fotoFrente').files[0];
+            const fotoVerso = document.getElementById('fotoVerso').files[0];
+
+            if (!fotoFrente || !fotoVerso) {
+                alert('Ambas as fotos do documento são obrigatórias.');
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('fotoFrente', fotoFrente);
+            formData.append('fotoVerso', fotoVerso);
+
+            fetch('http://localhost:2052/upload-captura', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Documento enviado com sucesso!');
+                    closeModalPayment();
+                    showPreview(data.data.fotoFrente, data.data.fotoVerso);
+                    // Armazenar URLs no localStorage
+                    localStorage.setItem('fotoFrente', data.data.fotoFrente);
+                    localStorage.setItem('fotoVerso', data.data.fotoVerso);
+                } else {
+                    alert('Erro ao enviar documento!');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao enviar a imagem:', error);
+                alert('Erro ao enviar o documento!');
+            });
+        }
+
+        // Função para mostrar a pré-visualização das fotos
+        function showPreview(fotoFrentePath, fotoVersoPath) {
+            const fotosSelecionadas = document.querySelector('.fotos-selecionadas');
+            fotosSelecionadas.innerHTML = `
+                <p>Foto da Frente:</p>
+                <img src="${fotoFrentePath}" width="100" height="100" alt="Foto da Frente">
+                <p>Foto do Verso:</p>
+                <img src="${fotoVersoPath}" width="100" height="100" alt="Foto do Verso">
+            `;
+        }
+
+        // Carregar pré-visualização das fotos do localStorage
+        document.addEventListener('DOMContentLoaded', () => {
+            const fotoFrente = localStorage.getItem('fotoFrente');
+            const fotoVerso = localStorage.getItem('fotoVerso');
+            if (fotoFrente && fotoVerso) {
+                showPreview(fotoFrente, fotoVerso);
+            }
+        });
+
+        // Função para enviar o formulário
+        function submitButton() {
+            let name = document.getElementById('name').value;
+            let birth = document.getElementById('Nascimento').value;
+            let nacionalidade = document.getElementById('nacionalidade').value;
+            let civilState = document.getElementById('civilState').value;
+            let documentos = document.getElementById('documentos').value;
+            let docNumber = document.getElementById('docNumber').value;
+            let Distrito = document.getElementById('Distrito').value;
+            let Bairro = document.getElementById('Bairro').value;
+            let houseNumber = document.getElementById('houseNumber').value;
+            let quarterNumber = document.getElementById('quarterNumber').value;
+            let telefone = document.getElementById('telefone').value;
+            let telefoneAlternativo = document.getElementById('telefoneAlternativo').value;
+
+            const formData = {
+                name,
+                birth,
+                nacionalidade,
+                civilState,
+                documentos,
+                docNumber,
+                Distrito,
+                Bairro,
+                houseNumber,
+                quarterNumber,
+                telefone,
+                telefoneAlternativo
+            };
+
+            fetch('http://localhost:2052/api/save-data', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Dados enviados com sucesso!');
+                    window.location.href = 'http://localhost:2052/api/pagamentos';
+                } else {
+                    alert('Erro ao enviar dados!');
+                }
+            })
+            .catch(error => {
+                console.error('Erro ao enviar os dados:', error);
+                alert('Erro ao enviar os dados!');
+            });
+        }
+
+     </script>           
+</body>
+</html>

@@ -1,0 +1,13 @@
+{
+    "commands": [
+      {
+        "name": "comando1",
+        "script": "console.log('Comando 1 executado');"
+      },
+      {
+        "name": "comando2",
+        "script": "console.log('Comando 2 executado');"
+      }
+    ]
+  }
+  

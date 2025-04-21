@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Teste de idade</h2>
+    <span id="myYear">0000</span>
+
+    <script>
+        const getYears = document.getElementById('myYear')
+        const idade = window.prompt('qual seu ano de nascimento??');
+   const data = new Date()
+   const meuAno = idade
+   const seuAno = data.getFullYear()-meuAno
+   getYears.textContent = seuAno
+   window.alert(seuAno)
+    </script>
+</body>
+</html>
