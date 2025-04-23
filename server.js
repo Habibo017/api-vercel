@@ -44,6 +44,36 @@ const storage = multer.diskStorage({
     }
 });
 
+//rota da tina
+
+app.post('/api/chat', async (req, res) => {
+  const { query, user, conversation_id } = req.body;
+
+  try {
+    const response = await fetch('https://api.dify.ai/v1/chat-messages', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.DIFY_API_KEY}`
+      },
+      body: JSON.stringify({
+        query,
+        inputs: {},
+        response_mode: 'blocking',
+        user,
+        conversation_id
+      })
+    });
+
+    const data = await response.json();
+    res.json(data); // devolve a resposta da IA pro front
+  } catch (error) {
+    console.error('Erro na API da Dify:', error);
+    res.status(500).json({ error: 'Erro ao conversar com a IA.' });
+  }
+});
+
+
 
 // Inicializar o Multer com a configuração de storage
 const upload = multer({ storage: storage });
