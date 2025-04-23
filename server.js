@@ -150,6 +150,28 @@ app.get('/api/weather', async (req, res) => {
     }
 });
 
+// Rota GET para listar as imagens
+app.get('/api/imagens', (req, res) => {
+    const dirPath = path.join(__dirname, 'img');
+
+    fs.readdir(dirPath, (err, files) => {
+        if (err) {
+            return res.status(500).json({ message: 'Erro ao ler as imagens.' });
+        }
+
+        // Filtra só arquivos de imagem
+        const imageFiles = files.filter(file =>
+            file.endsWith('.jpg') || file.endsWith('.jpeg') || file.endsWith('.png') || file.endsWith('.webp')
+        );
+
+        // Monta as URLs completas (ajuste seu domínio se necessário)
+        const imageUrls = imageFiles.map(filename => `https://api-vercel-production.up.railway.app/img/${filename}`);
+
+        res.json({ imagens: imageUrls });
+    });
+});
+
+
 app.get('/api/check-hours', (req, res) => {
      
         // Configurar o fuso horário para Maputo
